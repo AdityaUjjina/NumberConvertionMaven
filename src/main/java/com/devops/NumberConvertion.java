@@ -15,20 +15,32 @@ public class NumberConvertion {
 	protected static final String HUNDREDS = "hundred";
 	protected static final String NOT_IN_RANGE = "not in range";
 	protected static final String EXIT_PROGRAM = "exit";
+	protected static int PARAMS;
 	protected Scanner stdin = new Scanner(System.in);
+	protected boolean executionStatus = true;
+	
 
-	public static void main(String[] args) {
+	public static void main(int args) {
+		PARAMS = args;
 		NumberConvertion converter = new NumberConvertion();
 		converter.stdio();
 	}
 
 	public void stdio() {
+		int input;
 		logger.info("Provide number between 1 to 999 to convert");
 		try {
-			int input = stdin.nextInt();
+			if (PARAMS >= 0 && executionStatus) {
+				input = PARAMS;
+				executionStatus = false;
+			} else if (executionStatus) {
+				input = stdin.nextInt();
+			} else {
+				input = 0;
+			}
 			String verbaloutput = exitcallverification(input);
 			if (verbaloutput.equals(EXIT_PROGRAM)) {
-				System.exit(0);
+				logger.fatal("Exit call received");
 			} else {
 				logger.info(verbaloutput);
 				stdio();
@@ -41,7 +53,6 @@ public class NumberConvertion {
 
 	public String exitcallverification(int integer) {
 		if (integer == 0) {
-			logger.fatal("Exit call received");
 			stdin.close();
 			return EXIT_PROGRAM;
 		} else if (integer > 0) {
@@ -76,5 +87,4 @@ public class NumberConvertion {
 			return NOT_IN_RANGE;
 		}
 	}
-
 }
