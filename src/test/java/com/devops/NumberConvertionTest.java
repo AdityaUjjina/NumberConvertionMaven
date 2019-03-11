@@ -52,11 +52,12 @@ public class NumberConvertionTest {
 
 	@Test
 	public void ReturnsExit() {
-		Assert.assertNotEquals("Zero", "zero", converter.exitcallverification("0"));
+		Assert.assertNotEquals("Zero", "zero", converter.exitcallverification(0));
 	}
-	
-	@Test
-	public void InvokeMain() {
-		NumberConvertion.main(100);
-	}
+/**	
+*	@Test
+*	public void InvokeMain() {
+*		NumberConvertion.main(100);
+*	}
+*/
 }
