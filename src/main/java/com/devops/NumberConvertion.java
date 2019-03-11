@@ -15,13 +15,13 @@ public class NumberConvertion {
 	protected static final String HUNDREDS = "hundred";
 	protected static final String NOT_IN_RANGE = "not in range";
 	protected static final String EXIT_PROGRAM = "exit";
-	protected static int PARAMS;
+	protected static int params;
 	protected Scanner stdin = new Scanner(System.in);
 	protected boolean executionStatus = true;
 	
 
 	public static void main(int args) {
-		PARAMS = args;
+		params = args;
 		NumberConvertion converter = new NumberConvertion();
 		converter.stdio();
 	}
@@ -30,8 +30,8 @@ public class NumberConvertion {
 		int input;
 		logger.info("Provide number between 1 to 999 to convert");
 		try {
-			if (PARAMS >= 0 && executionStatus) {
-				input = PARAMS;
+			if (params >= 0 && executionStatus) {
+				input = params;
 				executionStatus = false;
 			} else if (executionStatus) {
 				input = stdin.nextInt();
