@@ -2,7 +2,7 @@ package com.devops;
 
 import org.junit.*;
 
-public class NumberConvertionTest {
+public class NumberConvertionTest<T> {
 	private NumberConvertion converter;
 
 	@Before

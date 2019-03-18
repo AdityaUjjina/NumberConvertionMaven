@@ -15,35 +15,29 @@ public class NumberConvertion {
 	protected static final String HUNDREDS = "hundred";
 	protected static final String NOT_IN_RANGE = "not in range";
 	protected static final String EXIT_PROGRAM = "exit";
-	protected Scanner stdin = new Scanner(System.in);
-	protected int input=0;
+	protected static Scanner stdin = new Scanner(System.in);
+	protected static int input;
 
 	public static void main(String[] args) {
 		NumberConvertion converter = new NumberConvertion();
-		if (args.length>0)
-			converter.stdio(args[0]);
-		else
-			converter.stdio("Term");
-	}
-
-	public void stdio(String cliip) {
-		logger.info("Provide number between 1 to 999 to convert");
 		try {
-			if (cliip.equals("noTerm")) {
-				input=0;
-			} else {
-				input = stdin.nextInt();
-			}
-			String verbaloutput = exitcallverification(input);
+		if (args.length>0 && args[0].equals("noTerm")) {
+			input=0;
+		}
+		else {
+			logger.info("Provide number between 1 to 999 to convert");
+			input=stdin.nextInt();
+		}
+			String verbaloutput = converter.exitcallverification(input);
 			if (verbaloutput.equals(EXIT_PROGRAM)) {
 				logger.fatal("Exit call received");
 			} else {
 				logger.info(verbaloutput);
-				stdio(cliip);
+				NumberConvertion.main(new String[] {});
 			}
 		} catch (InputMismatchException e) {
 			logger.warn("Invalid number");
-			stdio(cliip);
+			NumberConvertion.main(new String[] {});
 		}
 	}
 
