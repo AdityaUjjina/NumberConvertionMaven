@@ -16,31 +16,34 @@ public class NumberConvertion {
 	protected static final String NOT_IN_RANGE = "not in range";
 	protected static final String EXIT_PROGRAM = "exit";
 	protected Scanner stdin = new Scanner(System.in);
-	
+	protected int input=0;
 
 	public static void main(String[] args) {
 		NumberConvertion converter = new NumberConvertion();
-		if(args.length>0)
-			logger.warn("No arguments allowed.");
+		if (args.length>0)
+			converter.stdio(args[0]);
 		else
-			converter.stdio();
+			converter.stdio("Term");
 	}
 
-	public void stdio() {
-		int input;
+	public void stdio(String cliip) {
 		logger.info("Provide number between 1 to 999 to convert");
 		try {
-			input = stdin.nextInt();
+			if (cliip.equals("noTerm")) {
+				input=0;
+			} else {
+				input = stdin.nextInt();
+			}
 			String verbaloutput = exitcallverification(input);
 			if (verbaloutput.equals(EXIT_PROGRAM)) {
 				logger.fatal("Exit call received");
 			} else {
 				logger.info(verbaloutput);
-				stdio();
+				stdio(cliip);
 			}
 		} catch (InputMismatchException e) {
 			logger.warn("Invalid number");
-			stdio();
+			stdio(cliip);
 		}
 	}
 
