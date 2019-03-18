@@ -21,13 +21,12 @@ public class NumberConvertion {
 	public static void main(String[] args) {
 		NumberConvertion converter = new NumberConvertion();
 		try {
-		if (args.length>0 && args[0].equals("noTerm")) {
-			input=0;
-		}
-		else {
 			logger.info("Provide number between 1 to 999 to convert");
-			input=stdin.nextInt();
-		}
+			if (args.length > 0 && args[0].equals("noTerm")) {
+				input = 0;
+			} else {
+				input = stdin.nextInt();
+			}
 			String verbaloutput = converter.exitcallverification(input);
 			if (verbaloutput.equals(EXIT_PROGRAM)) {
 				logger.fatal("Exit call received");
