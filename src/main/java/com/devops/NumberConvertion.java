@@ -15,29 +15,22 @@ public class NumberConvertion {
 	protected static final String HUNDREDS = "hundred";
 	protected static final String NOT_IN_RANGE = "not in range";
 	protected static final String EXIT_PROGRAM = "exit";
-	protected static int params;
 	protected Scanner stdin = new Scanner(System.in);
-	protected boolean executionStatus = true;
 	
 
-	public static void main(int args) {
-		params = args;
+	public static void main(String[] args) {
 		NumberConvertion converter = new NumberConvertion();
-		converter.stdio();
+		if(args.length>0)
+			logger.warn("No arguments allowed.");
+		else
+			converter.stdio();
 	}
 
 	public void stdio() {
 		int input;
 		logger.info("Provide number between 1 to 999 to convert");
 		try {
-			if (params >= 0 && executionStatus) {
-				input = params;
-				executionStatus = false;
-			} else if (executionStatus) {
-				input = stdin.nextInt();
-			} else {
-				input = 0;
-			}
+			input = stdin.nextInt();
 			String verbaloutput = exitcallverification(input);
 			if (verbaloutput.equals(EXIT_PROGRAM)) {
 				logger.fatal("Exit call received");

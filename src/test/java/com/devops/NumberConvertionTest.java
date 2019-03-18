@@ -57,6 +57,7 @@ public class NumberConvertionTest {
 	
 	@Test
 	public void InvokeMain() {
-		NumberConvertion.main(100);
+		String[] args= {"100"};
+		NumberConvertion.main(args);
 	}
 }
