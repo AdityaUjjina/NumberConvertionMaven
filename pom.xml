@@ -5,6 +5,7 @@
 	<groupId>com.devops</groupId>
 	<artifactId>NC</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+	<name>NC</name>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
